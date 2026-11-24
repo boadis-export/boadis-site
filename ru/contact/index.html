@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Контакты · BOADIS</title>
+<meta name="description" content="Geely · Lynk &amp; Co · Zeekr · Jetour · Changan · Wuling — прямые поставки в Африку, Южную Америку и на Ближний Восток: экспортная лицензия, таможенн">
+<link rel="canonical" href="https://boadis.com/ru/contact/">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="alternate" hreflang="x-default" href="https://boadis.com/contact/index.html"><link rel="alternate" hreflang="es" href="https://boadis.com/es/contact/index.html"><link rel="alternate" hreflang="ar" href="https://boadis.com/ar/contact/index.html"><link rel="alternate" hreflang="ru" href="https://boadis.com/ru/contact/index.html"><link rel="alternate" hreflang="fr" href="https://boadis.com/fr/contact/index.html">
+
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="../../ru/index.html">BOADIS<small>ЭКСПОРТ АВТОМОБИЛЕЙ</small></a>
+    <button class="menu-toggle" aria-label="menu" style="margin-inline-start:auto;border:1px solid #e6e9ef;background:#fff;border-radius:6px;padding:6px 10px">☰</button>
+    <ul><li><a href="../../ru/index.html">Главная</a></li><li><a href="../../ru/cars/index.html">Автомобили</a></li><li><a href="../../ru/markets/index.html">Рынки</a></li><li><a href="../../ru/services/index.html">Услуги</a></li><li><a href="../../ru/about/index.html">О компании</a></li><li><a href="../../ru/contact/index.html">Контакты</a></li></ul>
+    <div class="lang"><a class="" href="../..//">EN</a><a class="" href="../..//es/">ES</a><a class="" href="../..//ar/">AR</a><a class="on" href="../..//ru/">RU</a><a class="" href="../..//fr/">FR</a></div>
+  </div>
+</header>
+<section><div class="wrap">
+  <h2>Расскажите, что вам нужно</h2><p class="sub">Достаточно указать порт назначения, модель и количество.</p>
+  <p class="note" id="sent-ok" style="display:none;background:#e8f5e9;border-color:#a5d6a7;padding:10px 12px">
+    Thank you — your inquiry has been received. We reply within 2 working hours.</p>
+  <form class="form" id="lead-form" name="inquiry" method="POST" action="../../ru/contact/index.html?sent=1" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="inquiry">
+    <p hidden><label>Do not fill this out: <input name="bot-field"></label></p>
+    <input type="text" name="name" placeholder="Ваше имя" required>
+    <input type="text" name="company" placeholder="Компания">
+    <select name="country" required><option value="">Страна</option>
+      <option>Нигерия</option><option>Алжир</option><option>Перу</option><option>Гана</option><option>Египет</option><option>Колумбия</option><option>Другое</option></select>
+    <input type="tel" name="whatsapp" placeholder="WhatsApp" required>
+    <input type="text" name="model" placeholder="Интересующая модель">
+    <input type="number" name="qty" placeholder="Количество">
+    <textarea name="message" placeholder="Сообщение (порт назначения, комплектация, бюджет)"></textarea>
+    <button type="submit">Отправить запрос</button>
+  </form>
+  <script>
+  (function () {
+    var f = document.getElementById('lead-form');
+    if (!f) return;
+    if (/[?&]sent=1/.test(location.search)) {
+      f.style.display = 'none';
+      var ok = document.getElementById('sent-ok');
+      if (ok) ok.style.display = 'block';
+    }
+    // 表单默认交给 Netlify Forms（服务端收件）；局域网构建时才会注入内部询盘台脚本
+    var LAN = false;
+    f.addEventListener('submit', function (e) {
+      var hp = f.querySelector('[name=bot-field]');
+      if (hp && hp.value) return;
+      if (!LAN || !window.jwtrack) return;      // 走原生提交（Netlify Forms）
+      e.preventDefault();
+      var d = new FormData(f);
+      jwtrack.submit({
+        name: d.get('name') || '',
+        company: d.get('company') || '',
+        country: d.get('country') || '',
+        phone: d.get('whatsapp') || '',
+        models: d.get('model') || '',
+        qty: d.get('qty') || '',
+        message: d.get('message') || ''
+      }, function (r) {
+        if (r && r.ok) {
+          f.innerHTML = '<p class="note">Thank you. Your inquiry has been received, we reply within 2 working hours.</p>';
+        } else {
+          f.submit();                          // 内部台失败 → 回退 Netlify Forms
+        }
+      });
+      f.querySelector('button').disabled = true;
+    });
+  })();
+  </script>
+  <p class="note">By submitting you agree to be contacted about your inquiry. We do not share your data.</p>
+  <div style="margin-top:34px">
+    <h3 style="color:var(--navy)">Direct contact</h3>
+    <p>WhatsApp: +86 579 0000 0000　·　WeChat: L15988336681</p>
+    <p>Email: sales@boadis.com</p>
+    <p>Address: Room H11, 1/F, Kaiser Estate Phase 2, 51 Man Yue Street, Hung Hom, Hong Kong</p>
+    <p class="note">Working hours: Mon–Sat 09:00–18:00 (GMT+8). We reply within 2 working hours.</p>
+  </div>
+</div></section>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>BOADIS EXPORT & IMPORT CO., LIMITED</h4>
+        <p style="opacity:.75;letter-spacing:.02em">香港博远进出口有限公司</p>
+        <p>Room H11, 1/F, Kaiser Estate Phase 2, 51 Man Yue Street, Hung Hom, Hong Kong</p>
+        <p>Tel / WhatsApp: +86 579 0000 0000</p>
+        <p>Email: <a href="mailto:sales@boadis.com">sales@boadis.com</a></p>
+      </div>
+      <div>
+        <h4>QUICK LINKS</h4>
+        <p><a href="../../ru/cars/index.html">Автомобили</a></p>
+        <p><a href="../../ru/markets/index.html">Рынки</a></p>
+        <p><a href="../../ru/about/index.html">О компании</a></p>
+      </div>
+      <div>
+        <h4>DOCUMENTS</h4>
+        <p><a href="../../assets/img/docs/business-registration.jpg" target="_blank" rel="noopener">Business licence</a></p>
+        <p>Export licence</p>
+        <p>Customs registration</p>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© <span data-year>2026</span> BOADIS EXPORT &amp; IMPORT CO., LIMITED All rights reserved.</span>
+      <span>Последнее обновление: 2026-11-21</span>
+    </div>
+    <div class="copy" style="opacity:.55;font-size:11.5px;margin-top:6px">
+      <span>All content is proprietary. Automated scraping, mirroring and AI-training use are prohibited.
+      <span style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">BOADIS-CANARY-7F3A-2026 赤鳞-7421-岳鸣</span></span>
+    </div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/8613800000000" aria-label="WhatsApp" data-track="wa_click">✆</a>
+    
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
