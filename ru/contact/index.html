@@ -33,8 +33,10 @@
     <p hidden><label>Leave this empty: <input name="_honey"></label></p>
     <input type="text" name="name" placeholder="Ваше имя" required>
     <input type="text" name="company" placeholder="Компания">
-    <select name="country" required><option value="">Страна</option>
-      <option>Нигерия</option><option>Алжир</option><option>Перу</option><option>Гана</option><option>Египет</option><option>Колумбия</option><option>Другое</option></select>
+    <select name="country" id="country" required><option value="">Страна</option>
+      <option value="nigeria">Нигерия</option><option value="algeria">Алжир</option><option value="peru">Перу</option><option value="ghana">Гана</option><option value="egypt">Египет</option><option value="colombia">Колумбия</option><option value="other">Другое</option></select>
+    <div id="rep" style="display:none;margin:2px 0 6px;padding:12px 14px;border-radius:8px;
+         background:#f2f6fc;border:1px solid #dbe6f5;font-size:14px;line-height:1.7"></div>
     <input type="tel" name="whatsapp" placeholder="WhatsApp" required>
     <input type="text" name="model" placeholder="Интересующая модель">
     <input type="number" name="qty" placeholder="Количество">
@@ -43,6 +45,19 @@
   </form>
   <script>
   (function () {
+    var REPS = {"mustafa": {"name": "MUSTAFA", "phone": "+86 189 4797 5201", "wa": "8618947975201", "wechat": "MK254916154", "email": "254916154@qq.com"}, "hadia": {"name": "Hadia", "phone": "+86 187 9527 9733", "wa": "8618795279733", "wechat": "cp8972491029", "email": "1044897249@qq.com"}, "lizzie": {"name": "Lizzie", "phone": "+86 159 8833 6681", "wa": "8615988336681", "wechat": "L15988336681", "email": "1305270594@qq.com"}, "sales": {"name": "Sales team", "phone": "+86 579 0000 0000", "wa": "8613800000000", "wechat": "L15988336681", "email": "sales@boadis.com"}};
+    var REPOF = {"algeria": "mustafa", "egypt": "mustafa", "morocco": "mustafa", "nigeria": "hadia", "ghana": "hadia", "benin": "hadia", "niger": "hadia", "peru": "lizzie", "colombia": "lizzie", "chile": "lizzie", "uruguay": "lizzie", "argentina": "lizzie", "bolivia": "lizzie", "other": "sales"};
+    var LBL = {"ph": "Ваш контакт", "wa": "WhatsApp", "wx": "WeChat", "em": "Почта"};
+    var sel = document.getElementById('country'), box = document.getElementById('rep');
+    function paint() {
+      var k = REPOF[sel.value], r = REPS[k];
+      if (!r) { box.style.display = 'none'; return; }
+      box.innerHTML = '<b>' + LBL.ph + ': ' + r.name + '</b><br>' +
+        'Tel / ' + LBL.wa + ': <a href="https://wa.me/' + r.wa + '">' + r.phone + '</a><br>' +
+        LBL.wx + ': ' + r.wechat + '<br>' + LBL.em + ': <a href="mailto:' + r.email + '">' + r.email + '</a>';
+      box.style.display = 'block';
+    }
+    if (sel) { sel.addEventListener('change', paint); paint(); }
     var f = document.getElementById('lead-form');
     if (!f) return;
     if (/[?&]sent=1/.test(location.search)) {
