@@ -31,15 +31,13 @@ document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().g
       c.m = bump(c.m || {}, parts[1]);
       c.mn = c.mn || {};
       var h1 = document.querySelector('h1');
-      if (h1) { c.mn[parts[1]] = h1.textContent.trim().split('
-')[0].slice(0, 40); }
+      if (h1) { c.mn[parts[1]] = h1.textContent.trim().split(String.fromCharCode(10))[0].slice(0, 40); }
     }
   } else if (parts[0] === 'markets' && parts[1]) {
     c.k = bump(c.k || {}, parts[1]);
     c.kn = c.kn || {};
     var h2 = document.querySelector('h1');
-    if (h2) { c.kn[parts[1]] = h2.textContent.trim().split('
-')[0].slice(0, 40); }
+    if (h2) { c.kn[parts[1]] = h2.textContent.trim().split(String.fromCharCode(10))[0].slice(0, 40); }
   } else if (parts[0] === 'contact') {
     c.cv = (c.cv || 0) + 1;
     if (!c.cfirst) { c.cfirst = now; }
