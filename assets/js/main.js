@@ -51,8 +51,10 @@ document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().g
     var models = Object.keys(c.m || {}).map(function (k) { return (c.mn && c.mn[k] ? c.mn[k] : k) + 'x' + c.m[k]; });
     var mkts = Object.keys(c.k || {}).map(function (k) { return (c.kn && c.kn[k] ? c.kn[k] : k) + 'x' + c.k[k]; });
     var mins = c.first ? Math.max(1, Math.round((now - c.first) / 60000)) : 0;
+    var d0 = c.first ? new Date(c.first) : new Date();
+    var firstDay = d0.getFullYear() + '-' + ('0' + (d0.getMonth() + 1)).slice(-2) + '-' + ('0' + d0.getDate()).slice(-2);
     fld.value = [
-      'v1', 'pv=' + c.pv, 'min=' + mins, 'lang=' + (c.lang || 'en'),
+      'v1', 'pv=' + c.pv, 'min=' + mins, 'first=' + firstDay, 'lang=' + (c.lang || 'en'),
       'ref=' + (c.ref || 'direct'),
       'models=' + (models.join(',') || '-'),
       'markets=' + (mkts.join(',') || '-'),
@@ -62,7 +64,8 @@ document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().g
     var echo = document.getElementById('ctx-echo');
     if (echo && (models.length || mkts.length)) {
       echo.style.display = 'block';
-      echo.textContent = 'We have noted your interest: ' + [].concat(models, mkts).join(', ').replace(/x([0-9]+)/g, ' ($1 views)');
+      echo.textContent = 'We have noted your interest: ' + [].concat(models, mkts).join(', ')
+        .replace(/x([0-9]+)/g, function (m, n) { return ' (' + n + (n === '1' ? ' view)' : ' views)'); });
     }
   }
 })();
