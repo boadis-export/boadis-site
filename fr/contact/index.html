@@ -45,19 +45,34 @@
   </form>
   <script>
   (function () {
-    var REPS = {"mustafa": {"name": "MUSTAFA", "phone": "+86 189 4797 5201", "wa": "8618947975201", "wechat": "MK254916154", "email": "254916154@qq.com"}, "hadia": {"name": "Hadia", "phone": "+86 187 9527 9733", "wa": "8618795279733", "wechat": "cp8972491029", "email": "1044897249@qq.com"}, "lizzie": {"name": "Lizzie", "phone": "+86 159 8833 6681", "wa": "8615988336681", "wechat": "L15988336681", "email": "1305270594@qq.com"}, "sales": {"name": "Sales team", "phone": "+86 579 0000 0000", "wa": "8613800000000", "wechat": "L15988336681", "email": "sales@boadis.com"}};
+    var REPS = {"mustafa": {"name": "MUSTAFA", "region": "North Africa · Middle East", "mail": "mustafa@boadis.com", "wa": "8618947975201", "wechat": "MK254916154"}, "hadia": {"name": "Hadia", "region": "West Africa", "mail": "hadia@boadis.com", "wa": "8618795279733", "wechat": "cp8972491029"}, "lizzie": {"name": "Lizzie", "region": "Latin America", "mail": "lizzie@boadis.com", "wa": "8615988336681", "wechat": "L15988336681"}, "sales": {"name": "Sales team", "region": "Central Asia · other markets", "mail": "sales@boadis.com", "wa": "8613800000000", "wechat": "L15988336681"}};
     var REPOF = {"algeria": "mustafa", "egypt": "mustafa", "morocco": "mustafa", "nigeria": "hadia", "ghana": "hadia", "benin": "hadia", "niger": "hadia", "peru": "lizzie", "colombia": "lizzie", "chile": "lizzie", "uruguay": "lizzie", "argentina": "lizzie", "bolivia": "lizzie", "other": "sales"};
-    var LBL = {"ph": "Votre contact", "wa": "WhatsApp", "wx": "WeChat", "em": "E-mail"};
+    var LBL = {"ph": "Votre contact", "wa": "WhatsApp", "wx": "WeChat", "em": "E-mail", "more": "Afficher le contact", "less": "Masquer"};
     var sel = document.getElementById('country'), box = document.getElementById('rep');
+    var EMAIL_READY = false;
     function paint() {
       var k = REPOF[sel.value], r = REPS[k];
       if (!r) { box.style.display = 'none'; return; }
-      box.innerHTML = '<b>' + LBL.ph + ': ' + r.name + '</b><br>' +
-        'Tel / ' + LBL.wa + ': <a href="https://wa.me/' + r.wa + '">' + r.phone + '</a><br>' +
-        LBL.wx + ': ' + r.wechat + '<br>' + LBL.em + ': <a href="mailto:' + r.email + '">' + r.email + '</a>';
+      var head = '<b>' + r.name + '</b> · ' + (r.region || '');
+      var btn = '<button type="button" id="rep-more" style="margin-left:10px;padding:2px 10px;'
+        + 'border:1px solid #b9cde6;background:#fff;border-radius:6px;cursor:pointer;font-size:12.5px">'
+        + LBL.more + '</button>';
+      var detail = '<div id="rep-detail" style="display:none;margin-top:8px">'
+        + '<a href="https://wa.me/' + r.wa + '" style="display:inline-block;margin-right:14px">'
+        + LBL.wa + ' →</a>'
+        + LBL.wx + ': ' + r.wechat
+        + (EMAIL_READY && r.mail ? '<br>' + LBL.em + ': <a href="mailto:' + r.mail + '">' + r.mail + '</a>' : '')
+        + '</div>';
+      box.innerHTML = head + btn + detail;
       box.style.display = 'block';
+      var b = document.getElementById('rep-more');
+      if (b) b.addEventListener('click', function () {
+        var d = document.getElementById('rep-detail');
+        var open = d.style.display === 'block';
+        d.style.display = open ? 'none' : 'block';
+        b.textContent = open ? LBL.more : LBL.less;
+      });
     }
-    if (sel) { sel.addEventListener('change', paint); paint(); }
     var f = document.getElementById('lead-form');
     if (!f) return;
     if (/[?&]sent=1/.test(location.search)) {
