@@ -30,11 +30,13 @@
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://boadis.com/es/contact/?sent=1">
+    <input type="hidden" name="browsing_history" id="ctx-field" value="">
     <p hidden><label>Leave this empty: <input name="_honey"></label></p>
     <input type="text" name="name" placeholder="Nombre" required>
     <input type="text" name="company" placeholder="Empresa">
     <select name="country" id="country" required><option value="">País</option>
       <option value="nigeria">Nigeria</option><option value="algeria">Argelia</option><option value="peru">Perú</option><option value="ghana">Ghana</option><option value="egypt">Egipto</option><option value="colombia">Colombia</option><option value="other">Otro</option></select>
+    <p id="ctx-echo" class="note" style="display:none;background:#eef4ff;border-color:#c9dbf7;padding:10px 12px"></p>
     <div id="rep" style="display:none;margin:2px 0 6px;padding:12px 14px;border-radius:8px;
          background:#f2f6fc;border:1px solid #dbe6f5;font-size:14px;line-height:1.7"></div>
     <input type="tel" name="whatsapp" placeholder="WhatsApp" required>
