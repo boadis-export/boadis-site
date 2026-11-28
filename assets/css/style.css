@@ -116,3 +116,18 @@ display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgb
 .guide .g-ok{font-size:13px;color:#1c2534;margin:4px 0 6px}
 .guide .g-ok a{color:#1f5fbf;font-weight:600}
 .guide .g-n{font-size:11px;color:#8a94a3;margin-top:8px}
+
+.mchips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:4px 0 26px;padding:12px 14px;
+  background:#f6f8fc;border:1px solid #e2e8f2;border-radius:12px}
+.mchips-l{font-size:12px;color:#7b8698;letter-spacing:.08em;text-transform:uppercase;margin-right:4px}
+.mchip{font-size:13.5px;padding:5px 11px;border:1px solid #d8e0ee;border-radius:999px;background:#fff;
+  color:#1f3864;text-decoration:none;white-space:nowrap}
+.mchip span{color:#8a94a3;font-size:12px;margin-left:2px}
+.mchip:hover{border-color:#1f3864}
+.rgroup{margin:0 0 8px}
+.rh{font-size:17.5px;margin:30px 0 14px;padding-bottom:8px;border-bottom:1px solid #e6ecf5}
+.rh span{color:#9aa4b2;font-size:13px;font-weight:400;margin-left:6px}
+.rother{margin:26px 0 40px;padding:26px 28px;border:1px dashed #cfd8e6;border-radius:14px;background:#fbfcfe}
+.rother h3{margin:0 0 8px;font-size:18.5px}
+.rother p{color:#4a5568;margin:0}
+@media(max-width:640px){.mchips{gap:6px;padding:10px 12px}.mchip{font-size:12.5px;padding:4px 9px}}
