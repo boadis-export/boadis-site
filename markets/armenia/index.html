@@ -73,6 +73,31 @@
 })();
 </script>
 
+      <div class="guide"><div class="g-h"><b>Buyer guide (PDF, 1 page)</b></div><p class="g-d">Duty, VAT, age limit, ports and landed cost for this market — the same numbers you see on this page, in one page you can forward to your team.</p><form class="g-f" data-pdf="../../assets/guides/armenia.pdf" onsubmit="return bgSubmit(event)"><input type="email" name="email" required placeholder="Your email" autocomplete="email"><input type="hidden" name="market" value="armenia"><button type="submit">Get the PDF</button></form><div class="g-ok" hidden><span>Here is your file:</span> <a href="../../assets/guides/armenia.pdf" download>Download the buyer guide</a></div><div class="g-n">We use your email only to follow up on this market. No newsletter unless you ask.</div></div>
+<script>
+(function(){
+  var FS = atob("aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgvMTUyNDMyMjU0NEBxcS5jb20=");
+  window.bgSubmit = function(ev){
+    ev.preventDefault();
+    var f = ev.target, pdf = f.getAttribute("data-pdf");
+    var btn = f.querySelector("button"), email = f.querySelector('input[type=email]').value;
+    var ok = f.parentNode.querySelector(".g-ok");
+    function reveal(){ if(ok){ ok.hidden = false; } f.style.display = "none"; }
+    btn.disabled = true; btn.textContent = "…";
+    try {
+      fetch(FS, {
+        method: "POST",
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        body: JSON.stringify({email: email, market: f.querySelector('input[name=market]').value,
+                              _subject: "Buyer guide request: " + f.querySelector('input[name=market]').value})
+      }).then(reveal).catch(reveal);
+    } catch (e) { reveal(); }
+    setTimeout(reveal, 2500);
+    return false;
+  };
+})();
+</script>
+
       
       <h3 style="color:var(--navy);margin-top:26px">Models for this market</h3>
       <table style="width:100%;border-collapse:collapse;font-size:14.5px">

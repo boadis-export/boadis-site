@@ -32,6 +32,31 @@
       
       <h3 style="color:var(--navy);margin-top:26px">Taxes et coût rendu (2026)</h3><table style="border-collapse:collapse;font-size:13.5px"><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Droit d'importation</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Duty about 20% (CIF) — indicative only</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">TVA et autres taxes</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">VAT 16% + about 1% other levies</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Taxe à la consommation</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">No separate consumption tax</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Coût rendu</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Nominally ≈1.40× CIF; in practice unpredictable</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Limite d'âge</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">No published cap — confirm with a broker</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787">Source</td><td style="padding:7px 0;color:#6b7787;font-size:13px;word-break:break-all">https://askjapancars.com/en/cost-calculator/venezuela</td></tr></table>
       
+      <div class="guide"><div class="g-h"><b>Guide importateur (PDF, 1 page)</b></div><p class="g-d">Droits, TVA, limite d'âge, ports et coût rendu pour ce marché — les mêmes chiffres que cette page, sur une feuille à transmettre.</p><form class="g-f" data-pdf="../../../assets/guides/venezuela.pdf" onsubmit="return bgSubmit(event)"><input type="email" name="email" required placeholder="Votre e-mail" autocomplete="email"><input type="hidden" name="market" value="venezuela"><button type="submit">Obtenir le PDF</button></form><div class="g-ok" hidden><span>Votre fichier :</span> <a href="../../../assets/guides/venezuela.pdf" download>Télécharger le guide</a></div><div class="g-n">Votre e-mail sert uniquement au suivi de ce marché. Pas de newsletter sans demande.</div></div>
+<script>
+(function(){
+  var FS = atob("aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgvMTUyNDMyMjU0NEBxcS5jb20=");
+  window.bgSubmit = function(ev){
+    ev.preventDefault();
+    var f = ev.target, pdf = f.getAttribute("data-pdf");
+    var btn = f.querySelector("button"), email = f.querySelector('input[type=email]').value;
+    var ok = f.parentNode.querySelector(".g-ok");
+    function reveal(){ if(ok){ ok.hidden = false; } f.style.display = "none"; }
+    btn.disabled = true; btn.textContent = "…";
+    try {
+      fetch(FS, {
+        method: "POST",
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        body: JSON.stringify({email: email, market: f.querySelector('input[name=market]').value,
+                              _subject: "Buyer guide request: " + f.querySelector('input[name=market]').value})
+      }).then(reveal).catch(reveal);
+    } catch (e) { reveal(); }
+    setTimeout(reveal, 2500);
+    return false;
+  };
+})();
+</script>
+
       
       <h3 style="color:var(--navy);margin-top:26px">Modèles pour ce marché</h3>
       <table style="width:100%;border-collapse:collapse;font-size:14.5px">

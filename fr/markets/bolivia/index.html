@@ -73,6 +73,31 @@
 })();
 </script>
 
+      <div class="guide"><div class="g-h"><b>Guide importateur (PDF, 1 page)</b></div><p class="g-d">Droits, TVA, limite d'âge, ports et coût rendu pour ce marché — les mêmes chiffres que cette page, sur une feuille à transmettre.</p><form class="g-f" data-pdf="../../../assets/guides/bolivia.pdf" onsubmit="return bgSubmit(event)"><input type="email" name="email" required placeholder="Votre e-mail" autocomplete="email"><input type="hidden" name="market" value="bolivia"><button type="submit">Obtenir le PDF</button></form><div class="g-ok" hidden><span>Votre fichier :</span> <a href="../../../assets/guides/bolivia.pdf" download>Télécharger le guide</a></div><div class="g-n">Votre e-mail sert uniquement au suivi de ce marché. Pas de newsletter sans demande.</div></div>
+<script>
+(function(){
+  var FS = atob("aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgvMTUyNDMyMjU0NEBxcS5jb20=");
+  window.bgSubmit = function(ev){
+    ev.preventDefault();
+    var f = ev.target, pdf = f.getAttribute("data-pdf");
+    var btn = f.querySelector("button"), email = f.querySelector('input[type=email]').value;
+    var ok = f.parentNode.querySelector(".g-ok");
+    function reveal(){ if(ok){ ok.hidden = false; } f.style.display = "none"; }
+    btn.disabled = true; btn.textContent = "…";
+    try {
+      fetch(FS, {
+        method: "POST",
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        body: JSON.stringify({email: email, market: f.querySelector('input[name=market]').value,
+                              _subject: "Buyer guide request: " + f.querySelector('input[name=market]').value})
+      }).then(reveal).catch(reveal);
+    } catch (e) { reveal(); }
+    setTimeout(reveal, 2500);
+    return false;
+  };
+})();
+</script>
+
       <div class="exp">
   <div class="exp-head">
     <div><h4>Exportations chinoises de véhicules, par mois · Bolivie</h4><div class="exp-range">2026-01 – 2026-09</div></div>

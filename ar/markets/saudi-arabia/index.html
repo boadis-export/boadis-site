@@ -73,6 +73,31 @@
 })();
 </script>
 
+      <div class="guide"><div class="g-h"><b>دليل المستورد (PDF، صفحة واحدة)</b></div><p class="g-d">الرسوم وضريبة القيمة المضافة وحد العمر والموانئ والتكلفة النهائية لهذا السوق — نفس الأرقام الموجودة في هذه الصفحة في ورقة واحدة.</p><form class="g-f" data-pdf="../../../assets/guides/saudi-arabia.pdf" onsubmit="return bgSubmit(event)"><input type="email" name="email" required placeholder="بريدك الإلكتروني" autocomplete="email"><input type="hidden" name="market" value="saudi-arabia"><button type="submit">احصل على الملف</button></form><div class="g-ok" hidden><span>هذا ملفك:</span> <a href="../../../assets/guides/saudi-arabia.pdf" download>تحميل الدليل</a></div><div class="g-n">نستخدم بريدك لمتابعة هذا السوق فقط. لا رسائل دورية إلا إذا طلبتها.</div></div>
+<script>
+(function(){
+  var FS = atob("aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgvMTUyNDMyMjU0NEBxcS5jb20=");
+  window.bgSubmit = function(ev){
+    ev.preventDefault();
+    var f = ev.target, pdf = f.getAttribute("data-pdf");
+    var btn = f.querySelector("button"), email = f.querySelector('input[type=email]').value;
+    var ok = f.parentNode.querySelector(".g-ok");
+    function reveal(){ if(ok){ ok.hidden = false; } f.style.display = "none"; }
+    btn.disabled = true; btn.textContent = "…";
+    try {
+      fetch(FS, {
+        method: "POST",
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        body: JSON.stringify({email: email, market: f.querySelector('input[name=market]').value,
+                              _subject: "Buyer guide request: " + f.querySelector('input[name=market]').value})
+      }).then(reveal).catch(reveal);
+    } catch (e) { reveal(); }
+    setTimeout(reveal, 2500);
+    return false;
+  };
+})();
+</script>
+
       
       <h3 style="color:var(--navy);margin-top:26px">الطرازات المتاحة لهذا السوق</h3>
       <table style="width:100%;border-collapse:collapse;font-size:14.5px">
