@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>المغرب · import rules · BOADIS</title>
 <meta name="description" content="جيلي · لينك آند كو · زيكر — تسليم مباشر إلى أفريقيا وأمريكا الجنوبية والشرق الأوسط، مع ترخيص التصدير والتخليص الجمركي والمستندات الكاملة.">
 <link rel="canonical" href="https://boadis.com/ar/markets/morocco/">
@@ -31,6 +31,48 @@
       <p class="note">المصدر: منشورات الجمارك وهيئات المواصفات، تم التحقق منها في 2026-11. القواعد تتغير — أكّد قبل الشحن.</p>
       
       <h3 style="color:var(--navy);margin-top:26px">الضرائب وتكلفة التسليم (2026)</h3><table style="border-collapse:collapse;font-size:13.5px"><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">رسوم الاستيراد</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Duty 17.5% on ADII valuation (invoice not used)</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">ضريبة القيمة المضافة ورسوم أخرى</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">VAT 20% + TPI 0.25%</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">ضريبة الاستهلاك</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">No separate consumption tax</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">تكلفة التسليم</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">≈1.41× CIF</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">حد العمر</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Under 5 years; only EU origin gets EUR.1 zero duty</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787">المصدر</td><td style="padding:7px 0;color:#6b7787;font-size:13px;word-break:break-all">https://motora.ma/fr/blog/dedouanement-voiture-occasion-maroc-2026</td></tr></table>
+      <div class="calc" data-duty="0.175" data-vat="0.2" data-other="0.0025" data-freight="700">
+  <h3>حاسبة التكلفة الواصلة</h3>
+  <p class="calc-sub">جرّب قيمة FOB لترى تكلفة السيارة بعد التخليص تقريبًا.</p>
+  <div class="calc-row">
+    <label>FOB (دولار)<input type="number" class="calc-fob" value="12000" min="1000" step="500"></label>
+    <div class="calc-out">
+      <span>الشحن <b class="o-freight"></b></span>
+      <span>CIF <b class="o-cif"></b></span>
+      <span>الرسوم <b class="o-duty"></b></span>
+      <span>رسوم أخرى <b class="o-other"></b></span>
+      <span>ضريبة القيمة المضافة <b class="o-vat"></b></span>
+      <span class="calc-total">التكلفة الواصلة <b class="o-landed"></b></span>
+      <span class="calc-ratio">≈ مضاعف FOB <b class="o-ratio"></b></span>
+    </div>
+  </div>
+  <p class="calc-note">تقدير فقط بأكثر فئة رسوم شيوعًا — تأكّد مع مخلّصك الجمركي.</p>
+</div>
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  if (!root || !root.classList.contains('calc')) return;
+  var duty = +root.dataset.duty, vat = +root.dataset.vat, other = +root.dataset.other, freight = +root.dataset.freight;
+  var inp = root.querySelector('.calc-fob');
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function draw() {
+    var fob = Math.max(0, +inp.value || 0);
+    var cif = fob + freight;
+    var d = cif * duty, o = cif * other, v = (cif + d + o) * vat;
+    var landed = cif + d + o + v;
+    root.querySelector('.o-freight').textContent = money(freight);
+    root.querySelector('.o-cif').textContent = money(cif);
+    root.querySelector('.o-duty').textContent = money(d);
+    root.querySelector('.o-other').textContent = money(o);
+    root.querySelector('.o-vat').textContent = money(v);
+    root.querySelector('.o-landed').textContent = money(landed);
+    root.querySelector('.o-ratio').textContent = fob ? (landed / fob).toFixed(2) + '×' : '—';
+  }
+  inp.addEventListener('input', draw);
+  draw();
+})();
+</script>
+
       
       <h3 style="color:var(--navy);margin-top:26px">الطرازات المتاحة لهذا السوق</h3>
       <table style="width:100%;border-collapse:collapse;font-size:14.5px">

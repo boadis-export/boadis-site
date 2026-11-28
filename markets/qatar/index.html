@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Qatar · import rules · BOADIS</title>
 <meta name="description" content="Geely · Lynk &amp; Co · Zeekr — direct delivery to Africa, South America and the Middle East, with export licensing, customs clearance and full docume">
 <link rel="canonical" href="https://boadis.com/markets/qatar/">
@@ -31,6 +31,48 @@
       <p class="note">Source: customs / standards authority publications, verified 2026-11. Rules change — confirm before shipment.</p>
       
       <h3 style="color:var(--navy);margin-top:26px">Taxes & landed cost (2026)</h3><table style="border-collapse:collapse;font-size:13.5px"><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Import duty</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Duty 5% of CIF (GCC common tariff; no FTA with China or Korea)</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">VAT & other charges</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">VAT 0% (not yet introduced — Qatar and Kuwait are the last two GCC states at zero)</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Special consumption tax</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">No consumption tax on passenger cars</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Landed cost</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">CIF × 1.05 + fixed port charges; landed ≈1.15–1.22× FOB</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Age limit</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">About 5 years from build date, enforced at registration by the traffic department</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787">Source</td><td style="padding:7px 0;color:#6b7787;font-size:13px;word-break:break-all">https://shglobalauto.com/blog/customs-duty-korean-used-car-qatar+ https://customs.gov.qa</td></tr></table>
+      <div class="calc" data-duty="0.05" data-vat="0.0" data-other="0.0" data-freight="650">
+  <h3>Landed cost estimator</h3>
+  <p class="calc-sub">Try a FOB value — see roughly what the car costs once it clears customs.</p>
+  <div class="calc-row">
+    <label>FOB (USD)<input type="number" class="calc-fob" value="12000" min="1000" step="500"></label>
+    <div class="calc-out">
+      <span>Freight <b class="o-freight"></b></span>
+      <span>CIF <b class="o-cif"></b></span>
+      <span>Duty <b class="o-duty"></b></span>
+      <span>Other charges <b class="o-other"></b></span>
+      <span>VAT <b class="o-vat"></b></span>
+      <span class="calc-total">Landed <b class="o-landed"></b></span>
+      <span class="calc-ratio">≈ times FOB <b class="o-ratio"></b></span>
+    </div>
+  </div>
+  <p class="calc-note">Estimate only, using the most common duty band — confirm with your customs broker.</p>
+</div>
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  if (!root || !root.classList.contains('calc')) return;
+  var duty = +root.dataset.duty, vat = +root.dataset.vat, other = +root.dataset.other, freight = +root.dataset.freight;
+  var inp = root.querySelector('.calc-fob');
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function draw() {
+    var fob = Math.max(0, +inp.value || 0);
+    var cif = fob + freight;
+    var d = cif * duty, o = cif * other, v = (cif + d + o) * vat;
+    var landed = cif + d + o + v;
+    root.querySelector('.o-freight').textContent = money(freight);
+    root.querySelector('.o-cif').textContent = money(cif);
+    root.querySelector('.o-duty').textContent = money(d);
+    root.querySelector('.o-other').textContent = money(o);
+    root.querySelector('.o-vat').textContent = money(v);
+    root.querySelector('.o-landed').textContent = money(landed);
+    root.querySelector('.o-ratio').textContent = fob ? (landed / fob).toFixed(2) + '×' : '—';
+  }
+  inp.addEventListener('input', draw);
+  draw();
+})();
+</script>
+
       
       <h3 style="color:var(--navy);margin-top:26px">Models for this market</h3>
       <table style="width:100%;border-collapse:collapse;font-size:14.5px">

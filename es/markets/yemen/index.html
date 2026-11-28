@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Yemen · import rules · BOADIS</title>
 <meta name="description" content="Geely · Lynk &amp; Co · Zeekr — entrega directa a África, Sudamérica y Oriente Medio, con licencia de exportación, despacho aduanero y documentación c">
 <link rel="canonical" href="https://boadis.com/es/markets/yemen/">
@@ -31,6 +31,48 @@
       <p class="note">Fuente: publicaciones de aduanas y organismos de normalización, verificadas en 2026-11. Las normas cambian: confirme antes del embarque.</p>
       <h3 style="color:var(--navy);margin-top:26px">Certificación y acceso</h3><table style="border-collapse:collapse;font-size:14.5px"><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Esquema de homologación</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">Type approval (YSMO)</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Autorización del fabricante</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">No exigida por esta vía</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Importación unitaria</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">Según caso</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Plazo habitual</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">1–3 meses</td></tr></table><p class="note">Datos de fuentes públicas (2026-11). Las normas cambian: confirme con su agente aduanal.</p>
       <h3 style="color:var(--navy);margin-top:26px">Impuestos y costo de nacionalización (2026)</h3><table style="border-collapse:collapse;font-size:13.5px"><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Arancel de importación</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Duty 5% of CIF</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">IVA y otros cargos</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">No separate VAT</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Impuesto al consumo</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">War surcharge 20% on (CIF + duty)</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Costo de nacionalización</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">≈1.26× CIF plus war-risk freight</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Límite de antigüedad</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">No published age cap — set by whoever controls the port</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787">Fuente</td><td style="padding:7px 0;color:#6b7787;font-size:13px;word-break:break-all">https://askjapancars.com/en/cost-calculator/yemen</td></tr></table>
+      <div class="calc" data-duty="0.05" data-vat="0.0" data-other="0.2" data-freight="1300">
+  <h3>Calculadora de costo puesto en destino</h3>
+  <p class="calc-sub">Prueba un valor FOB y mira cuánto cuesta el auto ya despachado.</p>
+  <div class="calc-row">
+    <label>FOB (USD)<input type="number" class="calc-fob" value="12000" min="1000" step="500"></label>
+    <div class="calc-out">
+      <span>Flete <b class="o-freight"></b></span>
+      <span>CIF <b class="o-cif"></b></span>
+      <span>Arancel <b class="o-duty"></b></span>
+      <span>Otros cargos <b class="o-other"></b></span>
+      <span>IVA <b class="o-vat"></b></span>
+      <span class="calc-total">Puesto en destino <b class="o-landed"></b></span>
+      <span class="calc-ratio">≈ veces FOB <b class="o-ratio"></b></span>
+    </div>
+  </div>
+  <p class="calc-note">Solo estimación con la banda arancelaria más común — confirma con tu agente de aduanas.</p>
+</div>
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  if (!root || !root.classList.contains('calc')) return;
+  var duty = +root.dataset.duty, vat = +root.dataset.vat, other = +root.dataset.other, freight = +root.dataset.freight;
+  var inp = root.querySelector('.calc-fob');
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function draw() {
+    var fob = Math.max(0, +inp.value || 0);
+    var cif = fob + freight;
+    var d = cif * duty, o = cif * other, v = (cif + d + o) * vat;
+    var landed = cif + d + o + v;
+    root.querySelector('.o-freight').textContent = money(freight);
+    root.querySelector('.o-cif').textContent = money(cif);
+    root.querySelector('.o-duty').textContent = money(d);
+    root.querySelector('.o-other').textContent = money(o);
+    root.querySelector('.o-vat').textContent = money(v);
+    root.querySelector('.o-landed').textContent = money(landed);
+    root.querySelector('.o-ratio').textContent = fob ? (landed / fob).toFixed(2) + '×' : '—';
+  }
+  inp.addEventListener('input', draw);
+  draw();
+})();
+</script>
+
       <div class="exp">
   <div class="exp-head">
     <div><h4>Exportaciones chinas de vehículos, por mes · Yemen</h4><div class="exp-range">2026-01 – 2026-09</div></div>

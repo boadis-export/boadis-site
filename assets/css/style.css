@@ -93,3 +93,15 @@ display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgb
  .stats{gap:24px}
 }
 @media print{.wa,header{display:none}}
+
+.calc{border:1px solid #e3e9f2;border-radius:12px;padding:18px 20px;margin-top:24px;background:#fbfcfe}
+.calc h3{margin:0 0 4px;color:#1f3864;font-size:17px}
+.calc-sub{margin:0 0 14px;color:#7b8794;font-size:13px}
+.calc-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.calc label{font-size:13px;color:#5b6675;display:block}
+.calc input{display:block;margin-top:6px;width:160px;padding:8px 10px;border:1px solid #ccd6e4;border-radius:8px;font-size:15px}
+.calc-out{display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:6px 22px;font-size:13.5px;color:#5b6675;flex:1;min-width:260px}
+.calc-out b{color:#1f3864;font-weight:600}
+.calc-total b{color:#0b5d3b;font-size:15px}
+.calc-ratio b{color:#a35b00}
+.calc-note{margin:12px 0 0;font-size:12px;color:#94a0b0}

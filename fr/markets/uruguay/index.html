@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Uruguay · import rules · BOADIS</title>
 <meta name="description" content="Geely · Lynk &amp; Co · Zeekr · Jetour · Changan · Wuling — livraison directe en Afrique, en Amérique du Sud et au Moyen-Orient, avec licence d'export">
 <link rel="canonical" href="https://boadis.com/fr/markets/uruguay/">
@@ -31,6 +31,48 @@
       <p class="note">Source : publications des douanes et des organismes de normalisation, vérifiées en 2026-11. Les règles changent — confirmez avant expédition.</p>
       <h3 style="color:var(--navy);margin-top:26px">Homologation et accès</h3><table style="border-collapse:collapse;font-size:14.5px"><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Schéma d'homologation</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">LATU homologation</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Autorisation du constructeur</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">Non exigé pour ce canal</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Importation à l'unité</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">Au cas par cas</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Délai habituel</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">1–3 mois</td></tr></table><p class="note">Données publiques (2026-11). Les règles évoluent : confirmez avec votre transitaire.</p>
       <h3 style="color:var(--navy);margin-top:26px">Taxes et coût rendu (2026)</h3><table style="border-collapse:collapse;font-size:13.5px"><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Droit d'importation</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Duty 23% for ICE, 0% for BEV and PHEV</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">TVA et autres taxes</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">IVA 22%</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Taxe à la consommation</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">IMESI 0% for BEV; PHEV 7–34.5% by size; ICE from 5.75% up to 34.5%</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Coût rendu</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">≈1.50× CIF for ICE, ≈1.22× for a BEV</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Limite d'âge</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Used cars only under five exemptions (residents relocating, etc.)</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787">Source</td><td style="padding:7px 0;color:#6b7787;font-size:13px;word-break:break-all">https://chejiahao.m.autohome.com.cn/pingan/chejiahao/detailinfo/26483343</td></tr></table>
+      <div class="calc" data-duty="0.23" data-vat="0.22" data-other="0.06" data-freight="800">
+  <h3>Calculateur de coût rendu</h3>
+  <p class="calc-sub">Saisissez une valeur FOB et voyez le coût approximatif dédouané.</p>
+  <div class="calc-row">
+    <label>FOB (USD)<input type="number" class="calc-fob" value="12000" min="1000" step="500"></label>
+    <div class="calc-out">
+      <span>Fret <b class="o-freight"></b></span>
+      <span>CIF <b class="o-cif"></b></span>
+      <span>Droits <b class="o-duty"></b></span>
+      <span>Autres frais <b class="o-other"></b></span>
+      <span>TVA <b class="o-vat"></b></span>
+      <span class="calc-total">Coût rendu <b class="o-landed"></b></span>
+      <span class="calc-ratio">≈ fois le FOB <b class="o-ratio"></b></span>
+    </div>
+  </div>
+  <p class="calc-note">Estimation avec la bande tarifaire la plus courante — à confirmer avec votre transitaire.</p>
+</div>
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  if (!root || !root.classList.contains('calc')) return;
+  var duty = +root.dataset.duty, vat = +root.dataset.vat, other = +root.dataset.other, freight = +root.dataset.freight;
+  var inp = root.querySelector('.calc-fob');
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function draw() {
+    var fob = Math.max(0, +inp.value || 0);
+    var cif = fob + freight;
+    var d = cif * duty, o = cif * other, v = (cif + d + o) * vat;
+    var landed = cif + d + o + v;
+    root.querySelector('.o-freight').textContent = money(freight);
+    root.querySelector('.o-cif').textContent = money(cif);
+    root.querySelector('.o-duty').textContent = money(d);
+    root.querySelector('.o-other').textContent = money(o);
+    root.querySelector('.o-vat').textContent = money(v);
+    root.querySelector('.o-landed').textContent = money(landed);
+    root.querySelector('.o-ratio').textContent = fob ? (landed / fob).toFixed(2) + '×' : '—';
+  }
+  inp.addEventListener('input', draw);
+  draw();
+})();
+</script>
+
       <div class="exp">
   <div class="exp-head">
     <div><h4>Exportations chinoises de véhicules, par mois · Uruguay</h4><div class="exp-range">2026-01 – 2026-09</div></div>

@@ -1,5 +1,12 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /contact/
+Disallow: /about/
+Disallow: /services/
+Disallow: /*/contact/
+Disallow: /*/about/
+Disallow: /*/services/
+Sitemap: https://boadis.com/sitemap.xml
 
 # No crawling, mirroring or AI-training use - incl. ByteDance / Alibaba / Baidu models.
 User-agent: GPTBot

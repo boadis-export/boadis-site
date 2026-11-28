@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="robots" content="index,follow">
 <title>Bolivia · import rules · BOADIS</title>
 <meta name="description" content="Geely · Lynk &amp; Co · Zeekr — direct delivery to Africa, South America and the Middle East, with export licensing, customs clearance and full docume">
 <link rel="canonical" href="https://boadis.com/markets/bolivia/">
@@ -31,6 +31,48 @@
       <p class="note">Source: customs / standards authority publications, verified 2026-11. Rules change — confirm before shipment.</p>
       <h3 style="color:var(--navy);margin-top:26px">Certification & access</h3><table style="border-collapse:collapse;font-size:14.5px"><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Approval scheme</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">IBNORCA homologation</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Manufacturer authorisation</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">Not required for this channel</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Single-unit import</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">Case by case</td></tr><tr><td style="padding:7px 12px 7px 0;color:#6b7787;white-space:nowrap">Typical lead time</td><td style="padding:7px 0;font-weight:600;color:var(--navy)">1–3 months</td></tr></table><p class="note">Compiled from public sources (2026-11). Rules change — confirm with your clearing agent before booking.</p>
       <h3 style="color:var(--navy);margin-top:26px">Taxes & landed cost (2026)</h3><table style="border-collapse:collapse;font-size:13.5px"><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Import duty</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">GA 10% of CIF</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">VAT & other charges</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">IVA 13% (tax-inclusive, effective 14.94%; base includes duty and ICE)</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Special consumption tax</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">ICE by displacement: ≤1,500 cc 5%, ≤2,000 cc 10%, ≤3,000 cc 15%, above 18%</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Landed cost</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">≈1.33× CIF on a 1.5L, ≈1.44× on a 2.0L, ≈1.60× above 3.0L</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">Age limit</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">Light passenger vehicles (HS 87.03) 1 year max since 2016 (DS 2232); commercials slightly wider</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787">Source</td><td style="padding:7px 0;color:#6b7787;font-size:13px;word-break:break-all">https://askjapancars.com/en/cost-calculator/bolivia</td></tr></table>
+      <div class="calc" data-duty="0.1" data-vat="0.1494" data-other="0.1" data-freight="800">
+  <h3>Landed cost estimator</h3>
+  <p class="calc-sub">Try a FOB value — see roughly what the car costs once it clears customs.</p>
+  <div class="calc-row">
+    <label>FOB (USD)<input type="number" class="calc-fob" value="12000" min="1000" step="500"></label>
+    <div class="calc-out">
+      <span>Freight <b class="o-freight"></b></span>
+      <span>CIF <b class="o-cif"></b></span>
+      <span>Duty <b class="o-duty"></b></span>
+      <span>Other charges <b class="o-other"></b></span>
+      <span>VAT <b class="o-vat"></b></span>
+      <span class="calc-total">Landed <b class="o-landed"></b></span>
+      <span class="calc-ratio">≈ times FOB <b class="o-ratio"></b></span>
+    </div>
+  </div>
+  <p class="calc-note">Estimate only, using the most common duty band — confirm with your customs broker.</p>
+</div>
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  if (!root || !root.classList.contains('calc')) return;
+  var duty = +root.dataset.duty, vat = +root.dataset.vat, other = +root.dataset.other, freight = +root.dataset.freight;
+  var inp = root.querySelector('.calc-fob');
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function draw() {
+    var fob = Math.max(0, +inp.value || 0);
+    var cif = fob + freight;
+    var d = cif * duty, o = cif * other, v = (cif + d + o) * vat;
+    var landed = cif + d + o + v;
+    root.querySelector('.o-freight').textContent = money(freight);
+    root.querySelector('.o-cif').textContent = money(cif);
+    root.querySelector('.o-duty').textContent = money(d);
+    root.querySelector('.o-other').textContent = money(o);
+    root.querySelector('.o-vat').textContent = money(v);
+    root.querySelector('.o-landed').textContent = money(landed);
+    root.querySelector('.o-ratio').textContent = fob ? (landed / fob).toFixed(2) + '×' : '—';
+  }
+  inp.addEventListener('input', draw);
+  draw();
+})();
+</script>
+
       <div class="exp">
   <div class="exp-head">
     <div><h4>China's vehicle exports, monthly · Bolivia</h4><div class="exp-range">2026-01 – 2026-09</div></div>
