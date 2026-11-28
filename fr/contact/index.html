@@ -35,7 +35,7 @@
     <input type="text" name="name" placeholder="Votre nom" required>
     <input type="text" name="company" placeholder="Société">
     <select name="country" id="country" required><option value="">Pays</option>
-      <option value="nigeria">Nigéria</option><option value="algeria">Algérie</option><option value="peru">Pérou</option><option value="ghana">Ghana</option><option value="egypt">Égypte</option><option value="colombia">Colombie</option><option value="other">Autre</option></select>
+      <option value="nigeria">Nigeria</option><option value="algeria">Algeria</option><option value="peru">Peru</option><option value="uruguay">Uruguay</option><option value="uae">United Arab Emirates</option><option value="kazakhstan">Kazakhstan</option><option value="uzbekistan">Uzbekistan</option><option value="bolivia">Bolivia</option><option value="chile">Chile</option><option value="iraq">Iraq</option><option value="jordan">Jordan</option><option value="ethiopia">Ethiopia</option><option value="yemen">Yemen</option><option value="syria">Syria</option><option value="benin">Benin</option><option value="niger">Niger</option><option value="ghana">Ghana</option><option value="azerbaijan">Azerbaijan</option><option value="turkey">Türkiye</option><option value="turkmenistan">Turkmenistan</option><option value="egypt">Egypt</option><option value="saudi-arabia">Saudi Arabia</option><option value="colombia">Colombia</option><option value="qatar">Qatar</option><option value="kuwait">Kuwait</option><option value="morocco">Morocco</option><option value="senegal">Senegal</option><option value="cote-divoire">Cote d'Ivoire</option><option value="argentina">Argentina</option><option value="brazil">Brazil</option><option value="ecuador">Ecuador</option><option value="iran">Iran</option><option value="kenya">Kenya</option><option value="kyrgyzstan">Kyrgyzstan</option><option value="paraguay">Paraguay</option><option value="russia">Russia</option><option value="south-africa">South Africa</option><option value="venezuela">Venezuela</option><option value="georgia">Georgia</option><option value="armenia">Armenia</option><option value="bahrain">Bahrain</option><option value="oman">Oman</option><option value="panama">Panama</option><option value="costa-rica">Costa Rica</option><option value="guatemala">Guatemala</option><option value="honduras">Honduras</option><option value="el-salvador">El Salvador</option><option value="seychelles">Seychelles</option><option value="nepal">Nepal</option><option value="bangladesh">Bangladesh</option><option value="albania">Albania</option><option value="ukraine">Ukraine</option><option value="tanzania">Tanzania</option><option value="uganda">Uganda</option><option value="zambia">Zambia</option><option value="zimbabwe">Zimbabwe</option><option value="botswana">Botswana</option><option value="namibia">Namibia</option><option value="other">Autre / non listé</option></select>
     <p id="ctx-echo" class="note" style="display:none;background:#eef4ff;border-color:#c9dbf7;padding:10px 12px"></p>
     <div id="rep" style="display:none;margin:2px 0 6px;padding:12px 14px;border-radius:8px;
          background:#f2f6fc;border:1px solid #dbe6f5;font-size:14px;line-height:1.7"></div>
@@ -49,33 +49,26 @@
   <script>
   (function () {
     var REPS = {"mustafa": {"name": "MUSTAFA", "region": "North Africa · Middle East", "mail": "mustafa@boadis.com", "wa": "ODYxODk0Nzk3NTIwMQ==", "wechat": "MK254916154"}, "hadia": {"name": "Hadia", "region": "West Africa", "mail": "hadia@boadis.com", "wa": "ODYxODc5NTI3OTczMw==", "wechat": "cp8972491029"}, "lizzie": {"name": "Lizzie", "region": "Latin America", "mail": "lizzie@boadis.com", "wa": "ODYxNTk4ODMzNjY4MQ==", "wechat": "L15988336681"}, "sales": {"name": "Sales team", "region": "Central Asia · other markets", "mail": "sales@boadis.com", "wa": "ODYxMzgwMDAwMDAwMA==", "wechat": "L15988336681"}};
-    var REPOF = {"algeria": "mustafa", "egypt": "mustafa", "morocco": "mustafa", "nigeria": "hadia", "ghana": "hadia", "benin": "hadia", "niger": "hadia", "peru": "lizzie", "colombia": "lizzie", "chile": "lizzie", "uruguay": "lizzie", "argentina": "lizzie", "bolivia": "lizzie", "other": "sales"};
+    var REPOF = {"nigeria": "hadia", "algeria": "mustafa", "peru": "lizzie", "uruguay": "lizzie", "uae": "mustafa", "kazakhstan": "sales", "uzbekistan": "sales", "bolivia": "lizzie", "chile": "lizzie", "iraq": "mustafa", "jordan": "mustafa", "ethiopia": "hadia", "yemen": "mustafa", "syria": "mustafa", "benin": "hadia", "niger": "hadia", "ghana": "hadia", "azerbaijan": "sales", "turkey": "sales", "turkmenistan": "sales", "egypt": "mustafa", "saudi-arabia": "mustafa", "colombia": "lizzie", "qatar": "mustafa", "kuwait": "mustafa", "morocco": "mustafa", "senegal": "hadia", "cote-divoire": "hadia", "argentina": "lizzie", "brazil": "lizzie", "ecuador": "lizzie", "iran": "mustafa", "kenya": "hadia", "kyrgyzstan": "sales", "paraguay": "lizzie", "russia": "sales", "south-africa": "hadia", "venezuela": "lizzie", "georgia": "sales", "armenia": "sales", "bahrain": "mustafa", "oman": "mustafa", "panama": "lizzie", "costa-rica": "lizzie", "guatemala": "lizzie", "honduras": "lizzie", "el-salvador": "lizzie", "seychelles": "hadia", "nepal": "sales", "bangladesh": "sales", "albania": "sales", "ukraine": "sales", "tanzania": "hadia", "uganda": "hadia", "zambia": "hadia", "zimbabwe": "hadia", "botswana": "hadia", "namibia": "hadia", "other": "sales"};
+    var REGION = {"nigeria": "西非", "algeria": "北非", "peru": "南美", "uruguay": "南美", "uae": "海湾", "kazakhstan": "中亚", "uzbekistan": "中亚", "bolivia": "南美", "chile": "南美", "iraq": "中东", "jordan": "中东", "ethiopia": "东非", "yemen": "中东", "syria": "中东", "benin": "西非", "niger": "西非", "ghana": "西非", "azerbaijan": "中亚", "turkey": "欧亚", "turkmenistan": "中亚", "egypt": "北非", "saudi-arabia": "海湾", "colombia": "南美", "qatar": "中东", "kuwait": "中东", "morocco": "北非", "senegal": "西非", "cote-divoire": "西非", "argentina": "南美", "brazil": "南美", "ecuador": "南美", "iran": "中东", "kenya": "东非", "kyrgyzstan": "中亚与高加索", "paraguay": "南美", "russia": "中亚与高加索", "south-africa": "南部非洲", "venezuela": "南美", "georgia": "高加索", "armenia": "高加索", "bahrain": "中东", "oman": "中东", "panama": "中美洲", "costa-rica": "中美洲", "guatemala": "中美洲", "honduras": "中美洲", "el-salvador": "中美洲", "seychelles": "东非", "nepal": "南亚", "bangladesh": "南亚", "albania": "巴尔干", "ukraine": "东欧", "tanzania": "东非", "uganda": "东非", "zambia": "南部非洲", "zimbabwe": "南部非洲", "botswana": "南部非洲", "namibia": "南部非洲"};
     var LBL = {"ph": "Votre contact", "wa": "WhatsApp", "wx": "WeChat", "em": "E-mail", "more": "Afficher le contact", "less": "Masquer"};
     var sel = document.getElementById('country'), box = document.getElementById('rep');
     var EMAIL_READY = false;
     function paint() {
       var k = REPOF[sel.value], r = REPS[k];
       if (!r) { box.style.display = 'none'; return; }
-      var head = '<b>' + r.name + '</b> · ' + (r.region || '');
-      var btn = '<button type="button" id="rep-more" style="margin-left:10px;padding:2px 10px;'
-        + 'border:1px solid #b9cde6;background:#fff;border-radius:6px;cursor:pointer;font-size:12.5px">'
-        + LBL.more + '</button>';
-      var detail = '<div id="rep-detail" style="display:none;margin-top:8px">'
-        + '<a href="#" data-wa="' + r.wa + '" class="wa-link" style="display:inline-block;margin-right:14px">'
-        + LBL.wa + ' →</a>'
-        + LBL.wx + ': ' + r.wechat
-        + (EMAIL_READY && r.mail ? '<br>' + LBL.em + ': <a href="mailto:' + r.mail + '">' + r.mail + '</a>' : '')
-        + '</div>';
-      box.innerHTML = head + btn + detail;
+      var num = r.wa ? atob(r.wa) : '';
+      var tel = num ? '<a href="tel:+' + num + '" style="margin-right:16px;color:#1f3864">+' + num + '</a>' : '';
+      var wa = num ? '<a href="https://wa.me/' + num + '" target="_blank" rel="noopener" style="margin-right:16px">' + LBL.wa + ' →</a>' : '';
+      var wx = r.wechat ? '<span style="margin-right:16px">' + LBL.wx + ': <b>' + r.wechat + '</b></span>' : '';
+      var em = (EMAIL_READY && r.mail) ? '<div style="margin-top:6px">' + LBL.em + ': <a href="mailto:' + r.mail + '">' + r.mail + '</a></div>' : '';
+      box.innerHTML = '<div style="font-weight:700;color:#1f3864;font-size:15px">' + r.name + '</div>'
+        + '<div style="font-size:12.5px;color:#7b8698;margin:2px 0 8px">' + (REGION[sel.value] || r.region || '') + '</div>'
+        + '<div style="font-size:14px">' + tel + wa + wx + '</div>' + em;
       box.style.display = 'block';
-      var b = document.getElementById('rep-more');
-      if (b) b.addEventListener('click', function () {
-        var d = document.getElementById('rep-detail');
-        var open = d.style.display === 'block';
-        d.style.display = open ? 'none' : 'block';
-        b.textContent = open ? LBL.more : LBL.less;
-      });
     }
+    sel.addEventListener('change', paint);
+    if (sel.value) paint();
     box.addEventListener('click', function (e) {
       var a = e.target.closest ? e.target.closest('a.wa-link') : null;
       if (!a) return;
@@ -122,7 +115,7 @@
   <p class="note">En envoyant ce formulaire, vous acceptez d'être contacté au sujet de votre demande. Nous ne partageons pas vos données.</p>
   <div style="margin-top:34px">
     <h3 style="color:var(--navy)">Contact direct</h3>
-    <p>WhatsApp: +86 579 0000 0000　·　WeChat: L15988336681</p>
+    <p>WeChat: L15988336681</p>
     <p>E-mail: sales@boadis.com</p>
     <p>Adresse: Room H11, 1/F, Kaiser Estate Phase 2, 51 Man Yue Street, Hung Hom, Hong Kong</p>
     <p class="note">Horaires : lun–sam 09:00–18:00 (GMT+8). Nous répondons sous 2 heures ouvrées.</p>
@@ -135,7 +128,7 @@
         <h4>BOADIS EXPORT & IMPORT CO., LIMITED</h4>
         <p style="opacity:.75;letter-spacing:.02em">香港博远进出口有限公司</p>
         <p>Room H11, 1/F, Kaiser Estate Phase 2, 51 Man Yue Street, Hung Hom, Hong Kong</p>
-        <p>Tel / WhatsApp: +86 579 0000 0000</p>
+        <p>WeChat: L15988336681</p>
         <p>Email: <a href="mailto:sales@boadis.com">sales@boadis.com</a></p>
       </div>
       <div>

@@ -32,7 +32,31 @@
       
       <h3 style="color:var(--navy);margin-top:26px">الضرائب وتكلفة التسليم (2026)</h3><table style="border-collapse:collapse;font-size:13.5px"><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">رسوم الاستيراد</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">25%（CIF）；铁路发展税 1.5%、CEA 0.6% 另计</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">ضريبة القيمة المضافة ورسوم أخرى</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">18%（基数＝CIF＋关税＋消费税）</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">ضريبة الاستهلاك</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">消费税按排量：≤1,000cc 5%、1,000–2,000cc 10%、>2,000cc 15%（行业口径）</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">تكلفة التسليم</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">≈CIF×1.55–1.75（25% 关税＋10–15% 消费税＋18% VAT）</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787;white-space:nowrap;vertical-align:top">حد العمر</td><td style="padding:7px 0;color:var(--navy);font-weight:600;line-height:1.6">二手乘用车 ≤10 年（按首次登记日；实务以 TBS 与海关口径为准）</td></tr><tr><td style="padding:7px 14px 7px 0;color:#6b7787">المصدر</td><td style="padding:7px 0;color:#6b7787;font-size:13px;word-break:break-all">+</td></tr></table>
       
-      
+      <div class="guide"><div class="g-h"><b>دليل المستورد (PDF، صفحة واحدة)</b></div><p class="g-d">الرسوم وضريبة القيمة المضافة وحد العمر والموانئ والتكلفة النهائية لهذا السوق — نفس الأرقام الموجودة في هذه الصفحة في ورقة واحدة.</p><form class="g-f" data-pdf="../../../assets/guides/tanzania-ar.pdf" onsubmit="return bgSubmit(event)"><input type="email" name="email" required placeholder="بريدك الإلكتروني" autocomplete="email"><input type="hidden" name="market" value="tanzania"><input type="hidden" name="_subject" value="Buyer guide request — tanzania"><input type="hidden" name="_autoresponse" value="شكراً لاهتمامكم بسوق tanzania.&#10;&#10;دليل المستورد (PDF، صفحة واحدة): ../../../assets/guides/tanzania-ar.pdf&#10;&#10;نشحن إلى هذا السوق بانتظام. للحصول على التكلفة النهائية لطراز معين، أرسل الطراز والكمية وميناء الوصول — نجيب خلال يوم عمل واحد.&#10;&#10;قسم التصدير"><button type="submit">احصل على الملف</button></form><div class="g-ok" hidden><span>هذا ملفك:</span> <a href="../../../assets/guides/tanzania-ar.pdf" download>تحميل الدليل</a></div><div class="g-n">نستخدم بريدك لمتابعة هذا السوق فقط. لا رسائل دورية إلا إذا طلبتها.</div></div>
+<script>
+(function(){
+  var FS = atob("aHR0cHM6Ly9mb3Jtc3VibWl0LmNvL2FqYXgvMTUyNDMyMjU0NEBxcS5jb20=");
+  window.bgSubmit = function(ev){
+    ev.preventDefault();
+    var f = ev.target, pdf = f.getAttribute("data-pdf");
+    var btn = f.querySelector("button"), email = f.querySelector('input[type=email]').value;
+    var ok = f.parentNode.querySelector(".g-ok");
+    function reveal(){ if(ok){ ok.hidden = false; } f.style.display = "none"; }
+    btn.disabled = true; btn.textContent = "…";
+    try {
+      fetch(FS, {
+        method: "POST",
+        headers: {"Content-Type": "application/json", "Accept": "application/json"},
+        body: JSON.stringify({email: email, market: f.querySelector('input[name=market]').value,
+                              _subject: "Buyer guide request: " + f.querySelector('input[name=market]').value})
+      }).then(reveal).catch(reveal);
+    } catch (e) { reveal(); }
+    setTimeout(reveal, 2500);
+    return false;
+  };
+})();
+</script>
+
       
       <h3 style="color:var(--navy);margin-top:26px">الطرازات المتاحة لهذا السوق</h3>
       <table style="width:100%;border-collapse:collapse;font-size:14.5px">
@@ -64,7 +88,7 @@
         <h4>BOADIS EXPORT & IMPORT CO., LIMITED</h4>
         <p style="opacity:.75;letter-spacing:.02em">香港博远进出口有限公司</p>
         <p>Room H11, 1/F, Kaiser Estate Phase 2, 51 Man Yue Street, Hung Hom, Hong Kong</p>
-        <p>Tel / WhatsApp: +86 579 0000 0000</p>
+        <p>WeChat: L15988336681</p>
         <p>Email: <a href="mailto:sales@boadis.com">sales@boadis.com</a></p>
       </div>
       <div>
